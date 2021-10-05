@@ -17,7 +17,7 @@ function calcular() {
 
 
             
-    calculo.innerHTML = (`<p>${QtdTotalCarne} Kg de Carne`)
+    calculo.innerHTML = (`<p>${Math.ceil( QtdTotalCarne)} Kg de Carne`)
     calculo.innerHTML += (`<p>${Math.ceil( QtdTotalCerveja)} Latas de Cerveja`)
     calculo.innerHTML += (`<p>${Math.ceil( QtdTotalBebida / 2000)} Lts de Refrigerante e Água`)
             
