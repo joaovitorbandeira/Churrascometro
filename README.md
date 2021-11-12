@@ -1,6 +1,9 @@
 # Churrascometro
 Uma ferramenta útil para aqueles que amam churrasco, e que não gostam de fazer conta.
 
+##LINK PARA TESTE
+<a href="https://joaovitorbandeira.github.io">https://joaovitorbandeira.github.io</a>
+
 Com esse ferramenta, você poderá: <br>
 1° colocar a quantidade de pessoas que estarão na festa<br>
 2° diferenciando crianças de adultos<br>
