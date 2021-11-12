@@ -5,7 +5,7 @@ Com esse ferramenta, você poderá: <br>
 1° colocar a quantidade de pessoas que estarão na festa<br>
 2° diferenciando crianças de adultos<br>
 3° quanto tempo de duração terá<br>
-4° escolher suas opções de carnes, acompanhamentos e bebidas
+4° escolher suas opções de carnes, acompanhamentos e bebidas<br>
 5° depois é só curtir a beça!
 <br>
 
