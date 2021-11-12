@@ -5,24 +5,125 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Churrascômetro</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
     
 
     <main>
-        <div id="principal">
-            <h1>Churrascômetro</h1>
-            <input id="adultos" type="number" placeholder="Quantos adultos?">
-            <input id="criancas" type="number" placeholder="Quantas crianças?">
-            <input id="duracao" type="number" placeholder="Duração (h)">
-            <button onclick="calcular()" id="calcular">Calcular</button>
+        <div id="containerImage">
+            <img class="image" src=".//assets/barbecue.png" alt="Barbecue">
         </div>
-        <div id="calculo">
+        <div id="containerMain">
+            <section id="secaoInputs">
+                <div id="principal">
+                    <h1>Churrascô<span>metro</span></h1>
+                    <div class="container">
+                        <h4>Quantos adultos irão no Churrasco?</h4>
+                        <div class="sliderValue">
+                            <span id="spanAdultosTotal">0</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                        <input class="inputRange adultosTotal" type="range" min="0" max="100" step="1" value="0">
+                        <div class="value right">100</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <h4>Desse total, quantos  <span>NÃO</span> irão beber cerveja?</h4>
+                        <div class="sliderValue">
+                            <span id="spanAdultosNaoBebem">0</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                        <input class="inputRange adultosNaoBebem" type="range" min="0" max="100" step="1" value="0">
+                        <div class="value right">100</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <h4>Quantas crianças?</h4>
+                        <div class="sliderValue">
+                            <span id="spanCriancas">0</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                            <input class="inputRange criancas" type="range" min="0" max="50" step="1" value="0">
+                            <div class="value right">50</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <h4>Qual será a duração do Churras?</h4>
+                        <div class="sliderValue">
+                            <span id="spanDuracao">0</span>
+                        </div>
+                        <div class="field">
+                            <div class="value left">0</div>
+                        <input class="inputRange duracao" type="range" min="0" max="20" step="1" value="0">
+                        <div class="value right">20</div>
+                        </div>
+                    </div>
+                    
+                </div> 
+            </section>
 
+            <section id="secaoEscolhas">
+                <!-- Carnes de Boi -->
+                <div class="grupoEscolhas">
+                    <h4>1. Cortes Bovinos:</h4>
+                    <input class="cortesBovinos" id="alcatra" type="checkbox" value="alcatra"><label for="alcatra">Alcatra</label>
+                    <input class="cortesBovinos" id="picanha" type="checkbox" value="picanha"><label for="picanha">Picanha</label>
+                    <input class="cortesBovinos" id="contrafile" type="checkbox" value="contrafile"><label for="contrafile">Contra-Filé</label>
+                </div>
+
+                <!-- Carnes de Porco -->
+                <div class="grupoEscolhas">
+                    <h4>2. Cortes Suinos:</h4>
+                    <input id="pernil" type="checkbox" value="pernil"><label for="pernil">Pernil</label>
+                    <input id="barriga" type="checkbox" value="barriga"><label for="barriga"><label for="barriga">Barriguinha</label>
+                    <input id="lombo" type="checkbox" value="lombo"><label for="lombo">Lombo Suíno</label>
+                </div>
+
+                <!-- Acompanhamentos -->
+                <div class="grupoEscolhas">
+                    <h4>3. Acompanhamentos:</h4>
+                    <input id="pao" type="checkbox" value="pao"><label for="pao">Pão de Alho</label>
+                    <input id="queijo" type="checkbox" value="queijo"><label for="queijo">Queijo Coalho</label>
+                    <input id="coracao" type="checkbox" value="coracao"><label for="coracao">Coração</label>
+                    <input id="coxinha" type="checkbox" value="coxinha"><label for="coxinha">Coxinha da Asa</label>
+                    <input id="linguica" type="checkbox" value="linguica"><label for="linguica">Linguiça</label>
+                </div>
+
+                <!-- Bebidas -->
+                <div class="grupoEscolhas">
+                    <h4>4. Bebidas:</h4>
+                    <input id="refrigerante" type="checkbox" value="refrigerante"><label for="refrigerante">Refrigerante</label>
+                    <input id="agua" type="checkbox" value="agua"><label for="agua">Água</label>
+                    <input id="suco" type="checkbox" value="suco"><label for="suco">Suco</label>
+                    <input id="cerveja" type="checkbox" value="cerveja"><label for="cerveja">Cerveja</label>
+                </div>
+
+                <!-- Botão Calcular -->
+                <div>
+                    <button onclick="calcular()" id="calcular">Calcular</button>
+                </div>
+            </section>
+
+            <!-- Seção responsável pelo Resultado -->
+            <section id="secaoCalculo">
+                <div class="resultado">
+                    <p></p>
+                </div>
+            </section>
         </div>
-
     </main>
+
+    <footer>
+        <ul>
+            <li>Desenvolvido por <a href="https://instagram.com/bandeirajvitor" target="_blank">João Vitor Bandeira</a>
+            <li><a href="https://github.com/joaovitorbandeira/" target="_blank">Repositório no GitHub</a></li>
+        </ul>
+    </footer>
     <script src="./script.js"></script>
 </body>
 </html>
