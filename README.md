@@ -17,7 +17,7 @@ Com esse ferramenta, você poderá: <br>
 <hr>
 
 <p>
-   <li> :standing_man: Selecione quantos Adultos irão no seu Churras!
+   <li> :standing_man: Selecione quantos Adultos irão no seu Churras!<br>
   <img src="./assets/README_CHURRASCOMETRO/ADULTOS.png">
     </p>
     <hr>
@@ -34,18 +34,18 @@ Com esse ferramenta, você poderá: <br>
      <hr>
     
 <p>
-  <li> :clock2: Selecione qual vai ser a média de duração do CHURRAS!
+  <li> :clock2: Selecione qual vai ser a média de duração do CHURRAS!<br>
   <img src="./assets/README_CHURRASCOMETRO/DURACAO.png">
     </p>
      <hr>
     
 <p>
-   <li>Por fim é só selecionar as opções desejadas, e então clicar em CALCULAR
+   <li>Por fim é só selecionar as opções desejadas, e então clicar em CALCULAR<br>
   <img src="./assets/README_CHURRASCOMETRO/OPCOES.png">
     </p>
      <hr>
 <p> 
-  <li>Basta clicar em CALCULAR e apareça na tela a MÉDIA de quanto será necessário comprar de cada item!
+  <li>Basta clicar em CALCULAR e apareça na tela a MÉDIA de quanto será necessário comprar de cada item!<br>
   <img src="./assets/README_CHURRASCOMETRO/RESULTADO.png">
 </p>
 
