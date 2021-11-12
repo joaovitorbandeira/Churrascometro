@@ -40,8 +40,8 @@ span{
 
 li > a{
   font-family: riffic_freebold;
-  color: red;
-  text-shadow: 1px 1px 0 white;
+  color: white;
+  text-shadow: 0px 0px 5px red;
 }
 
 h4{
@@ -49,22 +49,6 @@ h4{
   margin-bottom: 10px;
 }
 
-a{
-  font-family: riffic_freebold;
-  text-decoration: none;
-  color: red;
-  text-shadow: 1px 1px 0 white;
-}
-
-a:hover{
-  color: white;
-  text-shadow: 0px 0px 30px white, 0 0 15px white, 0px 0px 10px #553300, 0px 0px 10px #553300;
-}
-
-li > a:hover{
-  color: white;
-  text-shadow: 0px 0px 15px white, 0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
-}
 
 body{
     font-family: robotoregular;
@@ -266,12 +250,29 @@ main > #containerMain{
   transform: translateX(-25%);
 }
 
+a{
+  font-family: riffic_freebold;
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px 0 red;
+}
+
+a:hover{
+  color: white;
+  text-shadow: 0px 0px 30px white, 0 0 15px red, 0px 0px 10px #553300, 0px 0px 10px #553300;
+}
+
+li > a:hover{
+  color: white;
+  text-shadow: 0px 0px 15px red, 0px 0px 30px red,0px 0px 10px #553300,0px 0px 10px #553300;
+}
+
 footer{
   color: white;
 }
 
 li > span{
-  color: red;
+  color: white;
 }
 
 footer > ul > li{
