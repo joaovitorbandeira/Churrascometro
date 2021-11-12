@@ -40,12 +40,12 @@ Com esse ferramenta, você poderá: <br>
      <hr>
     
 <p>
-   <li>Por fim é só selecionar as opções desejadas, e então clicar em CALCULAR<br>
+   <li> :white_check_mark: Por fim é só selecionar as opções desejadas, e então clicar em CALCULAR<br>
   <img src="./assets/README_CHURRASCOMETRO/OPCOES.png">
     </p>
      <hr>
 <p> 
-  <li>Basta clicar em CALCULAR e apareça na tela a MÉDIA de quanto será necessário comprar de cada item!<br>
+  <li> :trollface: Basta clicar em CALCULAR e apareça na tela a MÉDIA de quanto será necessário comprar de cada item!<br>
   <img src="./assets/README_CHURRASCOMETRO/RESULTADO.png">
 </p>
 
