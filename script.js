@@ -228,10 +228,10 @@ function mostrarResultadoAcompanhamentos({
 }
 
 // BEBIDAS
-function mostrarResultadosBebidas({ nome, checkbox, mlAdulto, mlCrianca }) {
+function mostrarResultadosBebidas({ nome, checkbox }) {
   if (checkbox.checked) {
     const qtd =
-      calcularBebidas(adultosNaoBebem, criancas, duracao, 500, 500) / 1000;
+      calcularBebidas(adultosNaoBebem, criancas, duracao, 500, 250) / 1000;
     paragrafoResultado.innerHTML += `${qtd}L de ${nome} <br>`;
     console.log(`${nome} foi marcado`);
   } else {
