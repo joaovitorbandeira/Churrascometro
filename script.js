@@ -3,14 +3,12 @@ const sliderValueAdultosTotal = document.querySelector("span#spanAdultosTotal");
 const inputSliderAdultosTotal = document.querySelector(
   "input.inputRange.adultosTotal"
 );
-
 inputSliderAdultosTotal.oninput = () => {
   let value = inputSliderAdultosTotal.value;
   sliderValueAdultosTotal.textContent = value;
   sliderValueAdultosTotal.style.left = value + "%";
   sliderValueAdultosTotal.classList.add("show");
 };
-
 // ANIMAÇÃO DO BALÃO DOS ADULTOS QUE NÃO BEBEM
 const sliderValueAdultosNaoBebem = document.querySelector(
   "span#spanAdultosNaoBebem"
@@ -18,29 +16,24 @@ const sliderValueAdultosNaoBebem = document.querySelector(
 const inputSliderAdultosNaoBebem = document.querySelector(
   "input.inputRange.adultosNaoBebem"
 );
-
 inputSliderAdultosNaoBebem.oninput = () => {
   let value = inputSliderAdultosNaoBebem.value;
   sliderValueAdultosNaoBebem.textContent = value;
   sliderValueAdultosNaoBebem.style.left = value + "%";
   sliderValueAdultosNaoBebem.classList.add("show");
 };
-
 // ANIMAÇÃO DO BALÃO DAS CRIANÇAS
 const sliderValueCriancas = document.querySelector("span#spanCriancas");
 const inputSliderCriancas = document.querySelector("input.inputRange.criancas");
-
 inputSliderCriancas.oninput = () => {
   let value = inputSliderCriancas.value;
   sliderValueCriancas.textContent = value;
   sliderValueCriancas.style.left = value * 2 + "%";
   sliderValueCriancas.classList.add("show");
 };
-
 // ANIMAÇÃO DO BALÃO DA DURAÇÃO
 const sliderValueDuracao = document.querySelector("span#spanDuracao");
 const inputSliderDuracao = document.querySelector("input.inputRange.duracao");
-
 inputSliderDuracao.oninput = () => {
   let value = inputSliderDuracao.value;
   sliderValueDuracao.textContent = value;
@@ -57,32 +50,26 @@ const inputRangeAdultosNaoBebem = document.querySelector(
 );
 const inputRangeCriancas = document.querySelector("input.criancas");
 const inputRangeDuracao = document.querySelector("input.duracao");
-
 // Variáveis com os CHECKBOX
-
 // Carnes Bovinas
 const checkboxAlcatra = document.querySelector("input#alcatra");
 const checkboxPicanha = document.querySelector("input#picanha");
 const checkboxContraFile = document.querySelector("input#contrafile");
-
 // Carnes Suinas
 const checkboxPernil = document.querySelector("input#pernil");
 const checkboxBarriga = document.querySelector("input#barriga");
 const checkboxLombo = document.querySelector("input#lombo");
-
 // Acompanhamentos
 const checkboxPao = document.querySelector("input#pao");
 const checkboxQueijo = document.querySelector("input#queijo");
 const checkboxCoracao = document.querySelector("input#coracao");
 const checkboxCoxinha = document.querySelector("input#coxinha");
 const checkboxLinguica = document.querySelector("input#linguica");
-
 // Bebidas
 const checkboxRefrigerante = document.querySelector("input#refrigerante");
 const checkboxAgua = document.querySelector("input#agua");
 const checkboxSuco = document.querySelector("input#suco");
 const checkboxCerveja = document.querySelector("input#cerveja");
-
 // variável que pega o PARÁGRAFO do Resultado, pra colocar os itens depois
 const paragrafoResultado = document.getElementsByTagName("p")[0];
 
@@ -93,8 +80,7 @@ var criancas;
 var duracao;
 
 // Função que é executada ao clicar no Botão CALCULAR
-function calcular() {
-  //Pegando os valores das
+function calc() {
   adultos = inputRangeAdultosTotal.value;
   adultosNaoBebem = inputRangeAdultosNaoBebem.value;
   criancas = inputRangeCriancas.value;
@@ -102,243 +88,181 @@ function calcular() {
 
   //AO APERTAR O BOTÃO CALCULAR, SE JÁ TIVER CALCULADO UMA VEZ, FAZ LIMPAR O TEXTO PARA CALCULAR NOVAMENTE.
   paragrafoResultado.innerHTML = "";
-
   paragrafoResultado.innerHTML = "<h4>Você irá precisar de:</h4> <br>";
 
-  PegarAtributoCheckedAlcatra();
-  PegarAtributoCheckedContraFile();
-  PegarAtributoCheckedPicanha();
-  PegarAtributoCheckedPernil();
-  PegarAtributoCheckedBarriga();
-  PegarAtributoCheckedLombo();
-  PegarAtributoCheckedPao();
-  PegarAtributoCheckedQueijo();
-  PegarAtributoCheckedCoracao();
-  PegarAtributoCheckedCoxinha();
-  PegarAtributoCheckedLinguica();
-  PegarAtributoCheckedRefrigerante();
-  PegarAtributoCheckedAgua();
-  PegarAtributoCheckedSuco();
-  PegarAtributoCheckedCerveja();
+  mostrarResultadoCarnes({
+    nome: "Alcatra",
+    checkbox: checkboxAlcatra,
+    gAdulto: verificarDuracaoBoi(duracao),
+    gCrianca: verificarBoiCriancas(duracao),
+  });
+
+  mostrarResultadoCarnes({
+    nome: "Contra-Filé",
+    checkbox: checkboxContraFile,
+    gAdulto: verificarDuracaoBoi(duracao),
+    gCrianca: verificarBoiCriancas(duracao),
+  });
+
+  mostrarResultadoCarnes({
+    nome: "Picanha",
+    checkbox: checkboxPicanha,
+    gAdulto: verificarDuracaoBoi(duracao),
+    gCrianca: verificarBoiCriancas(duracao),
+  });
+
+  mostrarResultadoCarnes({
+    nome: "Pernil",
+    checkbox: checkboxPernil,
+    gAdulto: verificarDuracaoPorco(duracao),
+    gCrianca: verificarPorcoCriancas(duracao),
+  });
+
+  mostrarResultadoCarnes({
+    nome: "Barriga",
+    checkbox: checkboxBarriga,
+    gAdulto: verificarDuracaoPorco(duracao),
+    gCrianca: verificarPorcoCriancas(duracao),
+  });
+
+  mostrarResultadoCarnes({
+    nome: "Lombo",
+    checkbox: checkboxLombo,
+    gAdulto: verificarDuracaoPorco(duracao),
+    gCrianca: verificarPorcoCriancas(duracao),
+  });
+
+  mostrarResultadoAcompanhamentos({
+    nome: "Pão de Alho",
+    checkbox: checkboxPao,
+    uAdulto: verificarDuracaoAcompanhamentos(duracao),
+    uCrianca: verificarAcompanhamentosCriancas(duracao),
+  });
+
+  mostrarResultadoAcompanhamentos({
+    nome: "Queijo Coalho",
+    checkbox: checkboxQueijo,
+    uAdulto: verificarDuracaoAcompanhamentos(duracao),
+    uCrianca: verificarAcompanhamentosCriancas(duracao),
+  });
+
+  mostrarResultadoAcompanhamentos({
+    nome: "Coração",
+    checkbox: checkboxCoracao,
+    uAdulto: verificarDuracaoAcompanhamentos(duracao),
+    uCrianca: verificarAcompanhamentosCriancas(duracao),
+  });
+
+  mostrarResultadoAcompanhamentos({
+    nome: "Coxinha da Asa",
+    checkbox: checkboxCoxinha,
+    uAdulto: verificarDuracaoAcompanhamentos(duracao),
+    uCrianca: verificarAcompanhamentosCriancas(duracao),
+  });
+
+  mostrarResultadoAcompanhamentos({
+    nome: "Linguiça",
+    checkbox: checkboxLinguica,
+    uAdulto: verificarDuracaoAcompanhamentos(duracao),
+    uCrianca: verificarAcompanhamentosCriancas(duracao),
+  });
+
+  mostrarResultadosBebidas({
+    nome: "Água",
+    checkbox: checkboxAgua,
+    mlAdulto: verificarBebidas(duracao),
+    mlCrianca: verificarBebidasCrianca(duracao),
+  });
+
+  mostrarResultadosBebidas({
+    nome: "Suco",
+    checkbox: checkboxSuco,
+    mlAdulto: verificarBebidas(duracao),
+    mlCrianca: verificarBebidasCrianca(duracao),
+  });
+
+  mostrarResultadosBebidas({
+    nome: "Refrigerante",
+    checkbox: checkboxRefrigerante,
+  });
+
+  mostrarResultadosCervejas({
+    nome: "Cerveja",
+    checkbox: checkboxCerveja,
+  });
 }
 
-// CÁLCULO PARA CARNES DE BOI - ADULTOS
-/* Carne de boi = 300g/pessoa         +4h = 400g/pessoa
-Carne de Porco = 200g/pessoa       + 4h = 300g/pessoa
-Acompanhamentos = 2 un/pessoa      +4h = 3un/pessoa
-Bebidas = 500ml/pessoa/hora
+// FUNÇÕES PARA MOSTRAR RESULTADOS
 
-Crianças = Adultos / 2
- */
-
-function PegarAtributoCheckedAlcatra() {
-  if (checkboxAlcatra.checked) {
-    console.log("Carne Alcatra Marcada");
-    let qtdTotal =
-      verificarDuracaoBoi(duracao) * adultos +
-      verificarBoiCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Alcatra<br><br>`;
+//CARNES DE BOI E PORCO
+function mostrarResultadoCarnes({ nome, checkbox, gAdulto, gCrianca }) {
+  if (checkbox.checked) {
+    const qtd = calcularCarne(adultos, criancas, duracao, gAdulto, gCrianca);
+    paragrafoResultado.innerHTML += `${qtd.toFixed(2)} Kg de ${nome}<br>`;
+    console.log(`${nome} foi marcado`);
   } else {
-    console.log("Carne Alcatra Não Marcado");
+    console.log(`${nome} não foi marcado`);
   }
 }
 
-function PegarAtributoCheckedContraFile() {
-  if (checkboxContraFile.checked) {
-    console.log("Contra Filé Marcado");
-    let qtdTotal =
-      verificarDuracaoBoi(duracao) * adultos +
-      verificarBoiCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Contra-Filé<br><br>`;
-  } else {
-    console.log("Contra Filé Não Marcado");
-  }
+function calcularCarne(adulto, crianca, duracao, gAdulto, gCrianca) {
+  return adulto * duracao * gAdulto + crianca * duracao * gCrianca;
 }
 
-function PegarAtributoCheckedPicanha() {
-  if (checkboxPicanha.checked) {
-    console.log("Picanha Marcado");
-    let qtdTotal =
-      verificarDuracaoBoi(duracao) * adultos +
-      verificarBoiCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Picanha <br><br>`;
-  } else {
-    console.log("Picanha Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedPernil() {
-  if (checkboxPernil.checked) {
-    console.log("Pernil Marcado");
-    let qtdTotal =
-      verificarDuracaoPorco(duracao) * adultos +
-      verificarPorcoCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Pernil <br><br>`;
-  } else {
-    console.log("Pernil Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedBarriga() {
-  if (checkboxBarriga.checked) {
-    console.log("Barriga Marcado");
-    let qtdTotal =
-      verificarDuracaoPorco(duracao) * adultos +
-      verificarPorcoCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Barriguinha de Porco <br><br>`;
-  } else {
-    console.log("Barriga Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedLombo() {
-  if (checkboxLombo.checked) {
-    console.log("Lombo Marcado");
-    let qtdTotal =
-      verificarDuracaoPorco(duracao) * adultos +
-      verificarPorcoCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal.toFixed(
-      2
-    )} Kg de Lombo de Porco <br><br>`;
-  } else {
-    console.log("Lombo Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedPao() {
-  if (checkboxPao.checked) {
-    console.log("Pão Marcado");
-    let qtdTotal =
-      verificarDuracaoAcompanhamentos(duracao) * adultos +
-      verificarAcompanhamentosCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal} unidades de Pão de Alho<br><br>`;
-  } else {
-    console.log("Pão Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedQueijo() {
-  if (checkboxQueijo.checked) {
-    console.log("Queijo Marcado");
-    let qtdTotal =
-      verificarDuracaoAcompanhamentos(duracao) * adultos +
-      verificarAcompanhamentosCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal} unidades de Queijo Coalho<br><br>`;
-  } else {
-    console.log("Queijo Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedCoracao() {
-  if (checkboxCoracao.checked) {
-    console.log("Coração Marcado");
-    let qtdTotal = Math.ceil(
-      ((verificarDuracaoAcompanhamentos(duracao) * adultos +
-        verificarAcompanhamentosCriancas(duracao) * criancas) *
-        3) /
-        25
+//ACOMPANHAMENTOS
+function mostrarResultadoAcompanhamentos({
+  nome,
+  checkbox,
+  uAdulto,
+  uCrianca,
+}) {
+  if (checkbox.checked) {
+    const qtd = Math.ceil(
+      calcularCarne(adultos, criancas, duracao, uAdulto, uCrianca)
     );
-
-    paragrafoResultado.innerHTML += `${qtdTotal} espetos de Coração (25 unidades)<br><br>`;
+    paragrafoResultado.innerHTML += `${qtd} Unidades de ${nome} <br>`;
+    console.log(`${nome} foi marcado`);
   } else {
-    console.log("Coração Não Marcado");
+    console.log(`${nome} não foi marcado`);
   }
 }
 
-function PegarAtributoCheckedCoxinha() {
-  if (checkboxCoxinha.checked) {
-    console.log("Coxinha da Asa Marcado");
-    let qtdTotal =
-      verificarDuracaoAcompanhamentos(duracao) * adultos +
-      verificarAcompanhamentosCriancas(duracao) * criancas;
-
-    paragrafoResultado.innerHTML += `${qtdTotal} unidades de Coxinha da Asa<br><br>`;
+// BEBIDAS
+function mostrarResultadosBebidas({ nome, checkbox, mlAdulto, mlCrianca }) {
+  if (checkbox.checked) {
+    const qtd =
+      calcularBebidas(adultosNaoBebem, criancas, duracao, 500, 500) / 1000;
+    paragrafoResultado.innerHTML += `${qtd}L de ${nome} <br>`;
+    console.log(`${nome} foi marcado`);
   } else {
-    console.log("Coxinha da Asa Não Marcado");
+    console.log(`${nome} não foi marcado`);
   }
 }
 
-function PegarAtributoCheckedLinguica() {
-  if (checkboxLinguica.checked) {
-    console.log("Linguiça Marcado");
-    let qtdTotal =
-      verificarDuracaoAcompanhamentos(duracao) * adultos +
-      verificarAcompanhamentosCriancas(duracao) * criancas;
+function calcularBebidas(
+  adultosNaoBebem,
+  crianca,
+  duracao,
+  mlAdulto,
+  mlCrianca
+) {
+  return adultosNaoBebem * duracao * mlAdulto + crianca * duracao * mlCrianca;
+}
 
-    paragrafoResultado.innerHTML += `${qtdTotal} unidades de Linguiça<br><br>`;
+function mostrarResultadosCervejas({ nome, checkbox }) {
+  if (checkbox.checked) {
+    const qtd = Math.ceil(
+      calcularCerveja(adultos, adultosNaoBebem, duracao, 500) / 350
+    );
+    paragrafoResultado.innerHTML += `${qtd} Latas de ${nome} <br>`;
+    console.log(`${nome} foi marcado`);
   } else {
-    console.log("Linguiça Não Marcado");
+    console.log(`${nome} não foi marcado`);
   }
 }
 
-function PegarAtributoCheckedRefrigerante() {
-  if (checkboxRefrigerante.checked) {
-    console.log("Refrigerante Marcado");
-
-    let qtdTotal = adultosNaoBebem * duracao * 500 + criancas * duracao * 250;
-
-    paragrafoResultado.innerHTML += `${
-      qtdTotal / 1000
-    }L de Refrigerante<br><br>`;
-  } else {
-    console.log("Refrigerante Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedAgua() {
-  if (checkboxAgua.checked) {
-    console.log("Água Marcado");
-
-    let qtdTotal = adultosNaoBebem * duracao * 300 + criancas * duracao * 200;
-
-    paragrafoResultado.innerHTML += `${qtdTotal / 1000}L de Água<br><br>`;
-  } else {
-    console.log("Água Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedSuco() {
-  if (checkboxSuco.checked) {
-    console.log("Suco Marcado");
-
-    let qtdTotal = adultosNaoBebem * duracao * 500 + criancas * duracao * 250;
-
-    paragrafoResultado.innerHTML += `${qtdTotal / 1000}L de Suco<br><br>`;
-  } else {
-    console.log("Suco Não Marcado");
-  }
-}
-
-function PegarAtributoCheckedCerveja() {
-  if (checkboxCerveja.checked) {
-    console.log("Cerveja Marcado");
-
-    let qtdTotal = (adultos - adultosNaoBebem) * duracao * 300;
-
-    paragrafoResultado.innerHTML += `${Math.ceil(
-      qtdTotal / 350
-    )} Latas de Cerveja<br><br>`;
-  } else {
-    console.log("Cerveja Não Marcado");
-  }
+function calcularCerveja(adulto, adultosNaoBebem, duracao, mlAdulto) {
+  return (adulto - adultosNaoBebem) * duracao * mlAdulto;
 }
 
 // Funções que retornam o valor para o cálculo de acordo com a DURAÇÃO
@@ -388,4 +312,12 @@ function verificarAcompanhamentosCriancas(duracao) {
   } else {
     return 0.5;
   }
+}
+
+function verificarBebidas(duracao) {
+  return 1;
+}
+
+function verificarBebidasCrianca(duracao) {
+  return 1;
 }
