@@ -1,96 +1,93 @@
 @font-face {
-    font-family: 'riffic_freebold';
-    src: url('./rifficfree-bold-webfont.woff2') format('woff2'),
-         url('./rifficfree-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: "riffic_freebold";
+  src: url("./rifficfree-bold-webfont.woff2") format("woff2"),
+    url("./rifficfree-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'robotoregular';
-    src: url('roboto-regular-webfont.woff2') format('woff2'),
-         url('roboto-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: "robotoregular";
+  src: url("roboto-regular-webfont.woff2") format("woff2"),
+    url("roboto-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-*{
-  margin:0;
-  padding:0;
-  font-family: 'Arial', sans-serif;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  font-family: robotoregular;
+  font-size: 20px;
+  background-image: url(../assets/background1.jpg);
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
-
-h1, h2, h3, h4, h5, h6{
-    font-family: riffic_freebold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: riffic_freebold;
 }
 
-h1{
+h1 {
   margin-top: 20px;
   font-size: 50px;
 }
 
-span{
+span {
   font-family: riffic_freebold;
   color: red;
 }
 
-li > a{
+li > a {
   font-family: riffic_freebold;
   color: white;
   text-shadow: 0px 0px 5px red;
 }
 
-h4{
+h4 {
   margin-top: 45px;
   margin-bottom: 10px;
 }
 
-
-body{
-    font-family: robotoregular;
-    font-size: 20px;
-    background-image: url(../assets/background1.jpg);
-    background-repeat: no-repeat;
-
-    width: 100%;
+.grupoEscolhas input {
+  display: none;
 }
 
-.grupoEscolhas input{
-    display:none;
-  }
-  
-.grupoEscolhas input + label:before{
-  content:'';
+.grupoEscolhas input + label:before {
+  content: "";
   width: 18px;
   height: 18px;
   border-radius: 4px;
   background-color: white;
-  display:inline-block;
-  vertical-align:middle;
-  margin-bottom:4px;
-  margin-right:3px;
-  margin-left:10px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+  margin-right: 3px;
+  margin-left: 10px;
   border: 2px solid gray;
+  display: inline-block;
+}
+.grupoEscolhas input + label {
+  display: inline-block;
 }
 
-.grupoEscolhas input:checked + label:before{
-
+.grupoEscolhas input:checked + label:before {
   background-color: red;
-  
 }
 
 /* SETAR  O BACKGROUND DO INPUT RANGE */
-.inputRange{
+.inputRange {
   -webkit-appearance: none;
   background: #d3d3d3;
   outline: none;
   width: 100%;
   height: 5px;
-  border-radius: 10px;   
+  border-radius: 10px;
 }
 
 /* MUDAR O ESTILO DO INPUT RANGE */
@@ -99,7 +96,7 @@ body{
   appearance: none;
   width: 15px;
   height: 15px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background: red;
   cursor: pointer;
 }
@@ -107,41 +104,40 @@ body{
 .inputRange::-moz-range-thumb {
   width: 15px;
   height: 15px;
-  border-radius: 50%; 
+  border-radius: 50%;
 
   background: red;
   cursor: pointer;
 }
 /* FIM DO INPUT RANGE */
 
-
-.container h4{
+.container h4 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-
-html, body{
+html,
+body {
   display: grid;
   height: 100%;
   text-align: center;
   place-items: center;
 }
 
-.container{
+.container {
   height: 80px;
   width: 90%;
   background: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  padding: 0 65px 0 45px; 
+  padding: 0 65px 0 45px;
 }
 
-.container .sliderValue{
+.container .sliderValue {
   position: relative;
   width: 100%;
-} 
+}
 
-.container .sliderValue span{
+.container .sliderValue span {
   position: absolute;
   height: 45px;
   width: 350px;
@@ -156,7 +152,7 @@ html, body{
   font-size: 12px;
 }
 
-.container .sliderValue span::after{
+.container .sliderValue span::after {
   position: absolute;
   content: "";
   height: 20px;
@@ -171,7 +167,7 @@ html, body{
   border-bottom-left-radius: 50%;
 }
 
-.container .field{
+.container .field {
   position: relative;
   display: flex;
   align-items: center;
@@ -180,27 +176,26 @@ html, body{
   width: 100%;
 }
 
-.container .field .value{
+.container .field .value {
   position: absolute;
   font-size: 18px;
   font-weight: 500;
   color: black;
 }
 
-.container .field .value.left{
+.container .field .value.left {
   left: -22px;
 }
 
-.container .field .value.right{
+.container .field .value.right {
   right: -43px;
 }
 
-.container .sliderValue span.show{
+.container .sliderValue span.show {
   transform: translateX(-50%) scale(1);
 }
 
-
-button{
+button {
   margin: 30px;
   background-color: red;
   padding: 10px;
@@ -211,16 +206,13 @@ button{
   cursor: pointer;
 }
 
-button:hover{
+button:hover {
   background-color: black;
   color: white;
   border-color: red;
 }
 
-
-
-
-main{
+main {
   margin-top: 2%;
   margin-bottom: 5%;
   background-color: white;
@@ -231,18 +223,16 @@ main{
   grid-template-columns: 300px 60%;
 }
 
-
-main > #containerImage{
+main > #containerImage {
   grid-area: containerImage;
-  
 }
 
-main > #containerMain{
+main > #containerMain {
   grid-area: containerMain;
   margin-left: 20%;
 }
 
-.image{
+.image {
   width: 100%;
   position: sticky;
   top: 15%;
@@ -250,32 +240,34 @@ main > #containerMain{
   transform: translateX(-25%);
 }
 
-a{
+a {
   font-family: riffic_freebold;
   text-decoration: none;
   color: white;
   text-shadow: 1px 1px 0 red;
 }
 
-a:hover{
+a:hover {
   color: white;
-  text-shadow: 0px 0px 30px white, 0 0 15px red, 0px 0px 10px #553300, 0px 0px 10px #553300;
+  text-shadow: 0px 0px 30px white, 0 0 15px red, 0px 0px 10px #553300,
+    0px 0px 10px #553300;
 }
 
-li > a:hover{
+li > a:hover {
   color: white;
-  text-shadow: 0px 0px 15px red, 0px 0px 30px red,0px 0px 10px #553300,0px 0px 10px #553300;
+  text-shadow: 0px 0px 15px red, 0px 0px 30px red, 0px 0px 10px #553300,
+    0px 0px 10px #553300;
 }
 
-footer{
-  color: white;
-}
-
-li > span{
+footer {
   color: white;
 }
 
-footer > ul > li{
+li > span {
+  color: white;
+}
+
+footer > ul > li {
   display: inline-block;
   text-align: center;
   margin-bottom: 55px;
@@ -284,70 +276,69 @@ footer > ul > li{
 }
 
 @media only screen and (max-width: 1000px) {
-  .image{
+  .image {
     width: 80%;
   }
 
-  #containerMain{
+  #containerMain {
     margin-left: 0;
   }
 
-  .container{
+  .container {
     width: 70%;
   }
-  main{
+  main {
     width: 85%;
   }
 
-  h1{
+  h1 {
     font-size: 40px;
   }
 }
 
 @media only screen and (max-width: 890px) {
-  .image{
+  .image {
     display: none;
     position: relative;
   }
-  main{
+  main {
     display: block;
   }
 
-  main > #containerMain{
+  main > #containerMain {
     margin-left: 13%;
   }
 
-  button{
+  button {
     margin: 20px 25%;
   }
 
-  footer > ul > li{
+  footer > ul > li {
     margin-bottom: 20px;
   }
 }
 
-@media only screen and (max-width: 500px){
-  main > #containerMain{
+@media only screen and (max-width: 500px) {
+  main > #containerMain {
     margin-left: 0;
   }
 
- .container{
-  padding: 10px 5px 30px 45px;
-  height: 100px;
+  .container {
+    padding: 10px 5px 30px 45px;
+    height: 100px;
+  }
+  .field {
+    margin-bottom: 30px;
+  }
 
- }
- .field{
-  margin-bottom: 30px;
- }
+  h4 {
+    padding-top: 20px;
+  }
 
- h4{
-  padding-top: 20px;   
-}
-
-.container .field{
-  height: 50%;
-}
-.container .sliderValue{
-  bottom: 10px;
-}
+  .container .field {
+    height: 50%;
+  }
+  .container .sliderValue {
+    bottom: 10px;
+  }
 }
