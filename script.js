@@ -86,8 +86,20 @@ const checkboxCerveja = document.querySelector("input#cerveja");
 // variável que pega o PARÁGRAFO do Resultado, pra colocar os itens depois
 const paragrafoResultado = document.getElementsByTagName("p")[0];
 
+//VARIÁVEIS GLOBAIS DOS INPUTS
+var adultos;
+var adultosNaoBebem;
+var criancas;
+var duracao;
+
 // Função que é executada ao clicar no Botão CALCULAR
 function calcular() {
+  //Pegando os valores das
+  adultos = inputRangeAdultosTotal.value;
+  adultosNaoBebem = inputRangeAdultosNaoBebem.value;
+  criancas = inputRangeCriancas.value;
+  duracao = inputRangeDuracao.value;
+
   //AO APERTAR O BOTÃO CALCULAR, SE JÁ TIVER CALCULADO UMA VEZ, FAZ LIMPAR O TEXTO PARA CALCULAR NOVAMENTE.
   paragrafoResultado.innerHTML = "";
 
@@ -122,10 +134,6 @@ Crianças = Adultos / 2
 function PegarAtributoCheckedAlcatra() {
   if (checkboxAlcatra.checked) {
     console.log("Carne Alcatra Marcada");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoBoi(duracao) * adultos +
       verificarBoiCriancas(duracao) * criancas;
@@ -141,10 +149,6 @@ function PegarAtributoCheckedAlcatra() {
 function PegarAtributoCheckedContraFile() {
   if (checkboxContraFile.checked) {
     console.log("Contra Filé Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoBoi(duracao) * adultos +
       verificarBoiCriancas(duracao) * criancas;
@@ -160,10 +164,6 @@ function PegarAtributoCheckedContraFile() {
 function PegarAtributoCheckedPicanha() {
   if (checkboxPicanha.checked) {
     console.log("Picanha Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoBoi(duracao) * adultos +
       verificarBoiCriancas(duracao) * criancas;
@@ -179,10 +179,6 @@ function PegarAtributoCheckedPicanha() {
 function PegarAtributoCheckedPernil() {
   if (checkboxPernil.checked) {
     console.log("Pernil Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoPorco(duracao) * adultos +
       verificarPorcoCriancas(duracao) * criancas;
@@ -198,10 +194,6 @@ function PegarAtributoCheckedPernil() {
 function PegarAtributoCheckedBarriga() {
   if (checkboxBarriga.checked) {
     console.log("Barriga Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoPorco(duracao) * adultos +
       verificarPorcoCriancas(duracao) * criancas;
@@ -217,10 +209,6 @@ function PegarAtributoCheckedBarriga() {
 function PegarAtributoCheckedLombo() {
   if (checkboxLombo.checked) {
     console.log("Lombo Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoPorco(duracao) * adultos +
       verificarPorcoCriancas(duracao) * criancas;
@@ -236,10 +224,6 @@ function PegarAtributoCheckedLombo() {
 function PegarAtributoCheckedPao() {
   if (checkboxPao.checked) {
     console.log("Pão Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoAcompanhamentos(duracao) * adultos +
       verificarAcompanhamentosCriancas(duracao) * criancas;
@@ -253,10 +237,6 @@ function PegarAtributoCheckedPao() {
 function PegarAtributoCheckedQueijo() {
   if (checkboxQueijo.checked) {
     console.log("Queijo Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoAcompanhamentos(duracao) * adultos +
       verificarAcompanhamentosCriancas(duracao) * criancas;
@@ -270,10 +250,6 @@ function PegarAtributoCheckedQueijo() {
 function PegarAtributoCheckedCoracao() {
   if (checkboxCoracao.checked) {
     console.log("Coração Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal = Math.ceil(
       ((verificarDuracaoAcompanhamentos(duracao) * adultos +
         verificarAcompanhamentosCriancas(duracao) * criancas) *
@@ -290,10 +266,6 @@ function PegarAtributoCheckedCoracao() {
 function PegarAtributoCheckedCoxinha() {
   if (checkboxCoxinha.checked) {
     console.log("Coxinha da Asa Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoAcompanhamentos(duracao) * adultos +
       verificarAcompanhamentosCriancas(duracao) * criancas;
@@ -307,10 +279,6 @@ function PegarAtributoCheckedCoxinha() {
 function PegarAtributoCheckedLinguica() {
   if (checkboxLinguica.checked) {
     console.log("Linguiça Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
     let qtdTotal =
       verificarDuracaoAcompanhamentos(duracao) * adultos +
       verificarAcompanhamentosCriancas(duracao) * criancas;
@@ -324,11 +292,6 @@ function PegarAtributoCheckedLinguica() {
 function PegarAtributoCheckedRefrigerante() {
   if (checkboxRefrigerante.checked) {
     console.log("Refrigerante Marcado");
-
-    let criancas = inputRangeCriancas.value;
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
-    let adultosNaoBebem = inputRangeAdultosNaoBebem.value;
 
     let qtdTotal = adultosNaoBebem * duracao * 500 + criancas * duracao * 250;
 
@@ -344,10 +307,6 @@ function PegarAtributoCheckedAgua() {
   if (checkboxAgua.checked) {
     console.log("Água Marcado");
 
-    let criancas = inputRangeCriancas.value;
-    let duracao = inputRangeDuracao.value;
-    let adultosNaoBebem = inputRangeAdultosNaoBebem.value;
-
     let qtdTotal = adultosNaoBebem * duracao * 300 + criancas * duracao * 200;
 
     paragrafoResultado.innerHTML += `${qtdTotal / 1000}L de Água<br><br>`;
@@ -360,10 +319,6 @@ function PegarAtributoCheckedSuco() {
   if (checkboxSuco.checked) {
     console.log("Suco Marcado");
 
-    let criancas = inputRangeCriancas.value;
-    let duracao = inputRangeDuracao.value;
-    let adultosNaoBebem = inputRangeAdultosNaoBebem.value;
-
     let qtdTotal = adultosNaoBebem * duracao * 500 + criancas * duracao * 250;
 
     paragrafoResultado.innerHTML += `${qtdTotal / 1000}L de Suco<br><br>`;
@@ -375,9 +330,6 @@ function PegarAtributoCheckedSuco() {
 function PegarAtributoCheckedCerveja() {
   if (checkboxCerveja.checked) {
     console.log("Cerveja Marcado");
-    let adultos = inputRangeAdultosTotal.value;
-    let duracao = inputRangeDuracao.value;
-    let adultosNaoBebem = inputRangeAdultosNaoBebem.value;
 
     let qtdTotal = (adultos - adultosNaoBebem) * duracao * 300;
 
