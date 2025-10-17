@@ -1,48 +1,7 @@
-// ANIMAÇÃO DO BALÃO DOS ADULTOS QUE BEBEM
-const sliderValueAdultosTotal = document.querySelector("span#spanAdultosTotal");
-const inputSliderAdultosTotal = document.querySelector(
-  "input.inputRange.adultosTotal"
-);
-inputSliderAdultosTotal.oninput = () => {
-  let value = inputSliderAdultosTotal.value;
-  sliderValueAdultosTotal.textContent = value;
-  sliderValueAdultosTotal.style.left = value + "%";
-  sliderValueAdultosTotal.classList.add("show");
-};
-// ANIMAÇÃO DO BALÃO DOS ADULTOS QUE NÃO BEBEM
-const sliderValueAdultosNaoBebem = document.querySelector(
-  "span#spanAdultosNaoBebem"
-);
-const inputSliderAdultosNaoBebem = document.querySelector(
-  "input.inputRange.adultosNaoBebem"
-);
-inputSliderAdultosNaoBebem.oninput = () => {
-  let value = inputSliderAdultosNaoBebem.value;
-  sliderValueAdultosNaoBebem.textContent = value;
-  sliderValueAdultosNaoBebem.style.left = value + "%";
-  sliderValueAdultosNaoBebem.classList.add("show");
-};
-// ANIMAÇÃO DO BALÃO DAS CRIANÇAS
-const sliderValueCriancas = document.querySelector("span#spanCriancas");
-const inputSliderCriancas = document.querySelector("input.inputRange.criancas");
-inputSliderCriancas.oninput = () => {
-  let value = inputSliderCriancas.value;
-  sliderValueCriancas.textContent = value;
-  sliderValueCriancas.style.left = value * 2 + "%";
-  sliderValueCriancas.classList.add("show");
-};
-// ANIMAÇÃO DO BALÃO DA DURAÇÃO
-const sliderValueDuracao = document.querySelector("span#spanDuracao");
-const inputSliderDuracao = document.querySelector("input.inputRange.duracao");
-inputSliderDuracao.oninput = () => {
-  let value = inputSliderDuracao.value;
-  sliderValueDuracao.textContent = value;
-  sliderValueDuracao.style.left = value * 5 + "%";
-  sliderValueDuracao.classList.add("show");
-};
-
-// PARTE DA LÓGICA DO BOTÃO CALCULAR
-
+const sliders = document.querySelectorAll("input[id^='input']")
+const inputs = document.querySelectorAll('input[id]:not([id*="input"])')
+const paragrafoResultado = document.getElementsByTagName("p")[0];
+const  botaoCalcular = document.getElementById('calcular');
 // Variáveis com os INPUTS RANGE do usuário
 const inputRangeAdultosTotal = document.querySelector("input.adultosTotal");
 const inputRangeAdultosNaoBebem = document.querySelector(
@@ -50,151 +9,98 @@ const inputRangeAdultosNaoBebem = document.querySelector(
 );
 const inputRangeCriancas = document.querySelector("input.criancas");
 const inputRangeDuracao = document.querySelector("input.duracao");
-// Variáveis com os CHECKBOX
-// Carnes Bovinas
-const checkboxAlcatra = document.querySelector("input#alcatra");
-const checkboxPicanha = document.querySelector("input#picanha");
-const checkboxContraFile = document.querySelector("input#contrafile");
-// Carnes Suinas
-const checkboxPernil = document.querySelector("input#pernil");
-const checkboxBarriga = document.querySelector("input#barriga");
-const checkboxLombo = document.querySelector("input#lombo");
-// Acompanhamentos
-const checkboxPao = document.querySelector("input#pao");
-const checkboxQueijo = document.querySelector("input#queijo");
-const checkboxCoracao = document.querySelector("input#coracao");
-const checkboxCoxinha = document.querySelector("input#coxinha");
-const checkboxLinguica = document.querySelector("input#linguica");
-// Bebidas
-const checkboxRefrigerante = document.querySelector("input#refrigerante");
-const checkboxAgua = document.querySelector("input#agua");
-const checkboxSuco = document.querySelector("input#suco");
-const checkboxCerveja = document.querySelector("input#cerveja");
-// variável que pega o PARÁGRAFO do Resultado, pra colocar os itens depois
-const paragrafoResultado = document.getElementsByTagName("p")[0];
 
-//VARIÁVEIS GLOBAIS DOS INPUTS
-var adultos;
-var adultosNaoBebem;
-var criancas;
-var duracao;
+//ANIMAÇÃO DOS INPUT RANGES
+sliders.forEach(slider =>{
+  slider.addEventListener('input', function(){
+    const value = this.value;
+    const spanId = this.id.replace('input', 'span');
+    const span = document.getElementById(spanId);
+    if (spanId != 'spanCriancas' && spanId != 'spanDuracao'){
+      if (span){
+        span.textContent = value;
+        span.style.left = value + "%";
+        span.classList.add("show");
+      }
+    } else if (spanId != "spanDuracao"){
+      span.textContent = value;
+      span.style.left = value * 2 + "%";
+      span.classList.add("show");
+    } else if (spanId != "spanCriancas"){
+      span.textContent = value;
+      span.style.left = value * 5 + "%";
+      span.classList.add("show");
+    }
+  })
+})
+
+// PARTE DA LÓGICA DO BOTÃO CALCULAR
+var adultos
+var adultosNaoBebem
+var criancas
+var duracao
 
 // Função que é executada ao clicar no Botão CALCULAR
-function calc() {
+botaoCalcular.addEventListener('click', ()=>{
+
   adultos = inputRangeAdultosTotal.value;
   adultosNaoBebem = inputRangeAdultosNaoBebem.value;
   criancas = inputRangeCriancas.value;
   duracao = inputRangeDuracao.value;
 
-  //AO APERTAR O BOTÃO CALCULAR, SE JÁ TIVER CALCULADO UMA VEZ, FAZ LIMPAR O TEXTO PARA CALCULAR NOVAMENTE.
-  paragrafoResultado.innerHTML = "";
-  paragrafoResultado.innerHTML = "<h4>Você irá precisar de:</h4> <br>";
+  paragrafoResultado.innerHTML = "<h4>Você irá precisar de:</h4> <br>"
 
-  mostrarResultadoCarnes({
-    nome: "Alcatra",
-    checkbox: checkboxAlcatra,
-    gAdulto: verificarDuracaoBoi(duracao),
-    gCrianca: verificarBoiCriancas(duracao),
-  });
+  const inputsChecked = [...inputs].filter((input) => input.checked)
 
-  mostrarResultadoCarnes({
-    nome: "Contra-Filé",
-    checkbox: checkboxContraFile,
-    gAdulto: verificarDuracaoBoi(duracao),
-    gCrianca: verificarBoiCriancas(duracao),
-  });
+  inputsChecked.forEach(input =>{
+    const carnesBovinas = ['alcatra', 'picanha', 'contrafile']
+    const carnesSuinas = ['pernil', 'barriga', 'lombo']
+    const acompanhamentos = ['pao', 'queijo', 'coracao', 'coxinha', 'linguica']
+    const bebidas = ['refrigerante', 'agua', 'suco']
+    const cerveja = ['cerveja']
+    const todasCarnes = [...carnesBovinas, ...carnesSuinas]
 
-  mostrarResultadoCarnes({
-    nome: "Picanha",
-    checkbox: checkboxPicanha,
-    gAdulto: verificarDuracaoBoi(duracao),
-    gCrianca: verificarBoiCriancas(duracao),
-  });
+    const item = document.querySelector(`label[for="${input.id}"]`).innerText;
 
-  mostrarResultadoCarnes({
-    nome: "Pernil",
-    checkbox: checkboxPernil,
-    gAdulto: verificarDuracaoPorco(duracao),
-    gCrianca: verificarPorcoCriancas(duracao),
-  });
+    if(todasCarnes.includes(input.value)){
+        mostrarResultadoCarnes({
+        nome: item,
+        checkbox: input,
+        gAdulto: verificarDuracaoBoi(duracao),
+        gCrianca: verificarBoiCriancas(duracao),
+      });
+    }
 
-  mostrarResultadoCarnes({
-    nome: "Barriga",
-    checkbox: checkboxBarriga,
-    gAdulto: verificarDuracaoPorco(duracao),
-    gCrianca: verificarPorcoCriancas(duracao),
-  });
-
-  mostrarResultadoCarnes({
-    nome: "Lombo",
-    checkbox: checkboxLombo,
-    gAdulto: verificarDuracaoPorco(duracao),
-    gCrianca: verificarPorcoCriancas(duracao),
-  });
-
-  mostrarResultadoAcompanhamentos({
-    nome: "Pão de Alho",
-    checkbox: checkboxPao,
+    if(acompanhamentos.includes(input.value)){
+    mostrarResultadoAcompanhamentos({
+    nome: item,
+    checkbox: input,
     uAdulto: verificarDuracaoAcompanhamentos(duracao),
     uCrianca: verificarAcompanhamentosCriancas(duracao),
   });
+  }
 
-  mostrarResultadoAcompanhamentos({
-    nome: "Queijo Coalho",
-    checkbox: checkboxQueijo,
-    uAdulto: verificarDuracaoAcompanhamentos(duracao),
-    uCrianca: verificarAcompanhamentosCriancas(duracao),
-  });
+  if (bebidas.includes(input.value)){
+    mostrarResultadosBebidas({
+      nome: item,
+      checkbox: input,
+      mlAdulto: verificarBebidas(duracao),
+     mlCrianca: verificarBebidasCrianca(duracao)
+    })
+  }
 
-  mostrarResultadoAcompanhamentos({
-    nome: "Coração",
-    checkbox: checkboxCoracao,
-    uAdulto: verificarDuracaoAcompanhamentos(duracao),
-    uCrianca: verificarAcompanhamentosCriancas(duracao),
-  });
+  if (cerveja.includes(input.value)){
+    mostrarResultadosCervejas({
+      nome: item,
+      checkbox: input
+    })
+  }
 
-  mostrarResultadoAcompanhamentos({
-    nome: "Coxinha da Asa",
-    checkbox: checkboxCoxinha,
-    uAdulto: verificarDuracaoAcompanhamentos(duracao),
-    uCrianca: verificarAcompanhamentosCriancas(duracao),
-  });
-
-  mostrarResultadoAcompanhamentos({
-    nome: "Linguiça",
-    checkbox: checkboxLinguica,
-    uAdulto: verificarDuracaoAcompanhamentos(duracao),
-    uCrianca: verificarAcompanhamentosCriancas(duracao),
-  });
-
-  mostrarResultadosBebidas({
-    nome: "Água",
-    checkbox: checkboxAgua,
-    mlAdulto: verificarBebidas(duracao),
-    mlCrianca: verificarBebidasCrianca(duracao),
-  });
-
-  mostrarResultadosBebidas({
-    nome: "Suco",
-    checkbox: checkboxSuco,
-    mlAdulto: verificarBebidas(duracao),
-    mlCrianca: verificarBebidasCrianca(duracao),
-  });
-
-  mostrarResultadosBebidas({
-    nome: "Refrigerante",
-    checkbox: checkboxRefrigerante,
-  });
-
-  mostrarResultadosCervejas({
-    nome: "Cerveja",
-    checkbox: checkboxCerveja,
-  });
+  /* FIM DA FUNÇÃO DE CALCULAR */
+  })
 }
-
-// FUNÇÕES PARA MOSTRAR RESULTADOS
-
-//CARNES DE BOI E PORCO
+)
+//CARNES
 function mostrarResultadoCarnes({ nome, checkbox, gAdulto, gCrianca }) {
   if (checkbox.checked) {
     const qtd = calcularCarne(adultos, criancas, duracao, gAdulto, gCrianca);
