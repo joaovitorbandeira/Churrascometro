@@ -82,7 +82,7 @@ h4 {
 
 /* SETAR  O BACKGROUND DO INPUT RANGE */
 .inputRange {
-  -webkit-appearance: none;
+  appearance: none;
   background: #d3d3d3;
   outline: none;
   width: 100%;
@@ -92,7 +92,6 @@ h4 {
 
 /* MUDAR O ESTILO DO INPUT RANGE */
 .inputRange::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
