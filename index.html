@@ -26,7 +26,7 @@
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                        <input class="inputRange adultosTotal" type="range" min="0" max="100" step="1" value="0">
+                        <input class="inputRange adultosTotal" id="inputAdultosTotal" type="range" min="0" max="100" step="1" value="0">
                         <div class="value right">100</div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                        <input class="inputRange adultosNaoBebem" type="range" min="0" max="100" step="1" value="0">
+                        <input class="inputRange adultosNaoBebem"  id="inputAdultosNaoBebem" type="range" min="0" max="100" step="1" value="0">
                         <div class="value right">100</div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                            <input class="inputRange criancas" type="range" min="0" max="50" step="1" value="0">
+                            <input class="inputRange criancas"  id="inputCriancas" type="range" min="0" max="50" step="1" value="0">
                             <div class="value right">50</div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="field">
                             <div class="value left">0</div>
-                        <input class="inputRange duracao" type="range" min="0" max="20" step="1" value="0">
+                        <input class="inputRange duracao"  id="inputDuracao" type="range" min="0" max="20" step="1" value="0">
                         <div class="value right">20</div>
                         </div>
                     </div>
@@ -71,9 +71,9 @@
                 <!-- Carnes de Boi -->
                 <div class="grupoEscolhas">
                     <h4>1. Cortes Bovinos:</h4>
-                    <input class="cortesBovinos" id="alcatra" type="checkbox" value="alcatra"><label for="alcatra">Alcatra</label>
-                    <input class="cortesBovinos" id="picanha" type="checkbox" value="picanha"><label for="picanha">Picanha</label>
-                    <input class="cortesBovinos" id="contrafile" type="checkbox" value="contrafile"><label for="contrafile">Contra-Filé</label>
+                    <input id="alcatra" type="checkbox" value="alcatra"><label for="alcatra">Alcatra</label>
+                    <input id="picanha" type="checkbox" value="picanha"><label for="picanha">Picanha</label>
+                    <input id="contrafile" type="checkbox" value="contrafile"><label for="contrafile">Contra-Filé</label>
                 </div>
 
                 <!-- Carnes de Porco -->
@@ -105,7 +105,7 @@
 
                 <!-- Botão Calcular -->
                 <div>
-                    <button onclick="calc()" id="calcular">Calcular</button>
+                    <button id="calcular">Calcular</button>
                 </div>
             </section>
 
